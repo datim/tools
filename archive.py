@@ -31,7 +31,9 @@ from optparse import OptionParser
 # OptionParser prog arguments
 PROGRAM_NAME="archive" 
 PROGRAM_VERSION = "1.9"
-DEFAULT_BACKUP_DIR = "/home/roecks/archive"
+
+# get home directory
+DEFAULT_BACKUP_DIR = os.path.join(os.path.expanduser('~'), "archive")
 
 # files to ignore
 ignore_list = [".svn"]
@@ -478,6 +480,12 @@ def main():
 
 	# perform the backup
 	archiver = Archive()
+
+    # create a backup directory, if it doesn't exist
+	if not os.path.exists(options.backupPath):
+		print "Unable to find backup directory '%s'. Unable to continue." % options.backupPath
+		sys.exit(1)
+
 
 	if options.listArchive:
 		####################################
