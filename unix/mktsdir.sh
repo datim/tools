@@ -1,4 +1,6 @@
 #!/bin/bash
+# create a directory with a timestamp.  Optionally provide the directory name
+# example directory name [TIMESTAMP]-[DIRECTORY NAME]
 
 datestring=`date +"%y-%m-%d_%H-%M-%S"`
 
